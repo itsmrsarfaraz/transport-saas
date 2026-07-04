@@ -1,5 +1,4 @@
 <?php
-
 // app/Models/Permission.php
 namespace App\Models;
 

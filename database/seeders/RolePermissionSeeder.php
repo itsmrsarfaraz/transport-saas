@@ -22,7 +22,7 @@ class RolePermissionSeeder extends Seeder
         }
 
         $roles = [
-            'super-admin' => $permissions, // gets everything
+            'super-admin' => $permissions,
             'admin' => ['routes.manage', 'vehicles.manage', 'drivers.manage', 'bookings.manage', 'leads.view', 'fares.manage', 'reports.view'],
             'dispatcher' => ['routes.manage', 'vehicles.manage', 'drivers.manage', 'bookings.manage'],
             'driver' => [],

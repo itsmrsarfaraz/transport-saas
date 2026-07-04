@@ -8,13 +8,14 @@ use App\Http\Requests\Auth\RegisterUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class RegisteredUserController extends Controller
 {
-    public function create(): \Illuminate\View\View
+    public function create(): View
     {
         return view('auth.register');
     }

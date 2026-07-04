@@ -1,16 +1,16 @@
 <?php
 
-// app/Policies/RoutePolicy.php  (Route = a transport route model, not Laravel's router)
+// app/Policies/RoutePolicy.php
 namespace App\Policies;
 
-use App\Models\Route;
+use App\Models\Route; 
 use App\Models\User;
 
 class RoutePolicy
 {
     public function viewAny(User $user): bool
     {
-        return true; // anyone authenticated can browse routes
+        return true;
     }
 
     public function create(User $user): bool
