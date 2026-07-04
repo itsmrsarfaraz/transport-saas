@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\LeadController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     return view('welcome');
 });
+
+Route::post('leads', [LeadController::class, 'store'])->name('leads.store');
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
