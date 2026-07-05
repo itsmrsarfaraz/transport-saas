@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 #[Fillable(['vehicle_type_id', 'registration_number', 'make', 'model', 'year', 'capacity', 'status'])]
 class Vehicle extends Model
@@ -25,5 +26,10 @@ class Vehicle extends Model
     public function vehicleType(): BelongsTo
     {
         return $this->belongsTo(VehicleType::class);
+    }
+
+    public function driverProfiles(): BelongsToMany
+    {
+        return $this->belongsToMany(DriverProfile::class, 'driver_vehicle')->withTimestamps();
     }
 }
