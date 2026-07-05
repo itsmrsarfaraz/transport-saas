@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\DriverProfileController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -55,5 +56,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
 
     Route::resource('vehicles', VehicleController::class)->except(['show']);
+    Route::resource('drivers', DriverProfileController::class)
+    ->except(['show'])
+    ->parameters(['drivers' => 'driver']);
 
 });
