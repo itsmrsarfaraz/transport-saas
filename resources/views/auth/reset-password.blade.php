@@ -1,6 +1,6 @@
-{{-- resources/views/auth/register.blade.php --}}
+{{-- resources/views/auth/reset-password.blade.php --}}
 <x-layouts.guest>
-    <h1 class="text-lg font-semibold text-gray-800 mb-6">Create your account</h1>
+    <h1 class="text-lg font-semibold text-gray-800 mb-6">Reset your password</h1>
 
     @if ($errors->any())
         <div class="mb-4 p-3 rounded-md bg-red-50 border border-red-200 text-sm text-red-700">
@@ -12,23 +12,19 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('register') }}" class="space-y-4">
+    <form method="POST" action="{{ route('password.update') }}" class="space-y-4">
         @csrf
 
-        <div>
-            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-            <input id="name" name="name" type="text" value="{{ old('name') }}" required autofocus
-                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
-        </div>
+        <input type="hidden" name="token" value="{{ $token }}">
 
         <div>
             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-            <input id="email" name="email" type="email" value="{{ old('email') }}" required
+            <input id="email" name="email" type="email" value="{{ old('email', $email) }}" required autofocus
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
         </div>
 
         <div>
-            <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+            <label for="password" class="block text-sm font-medium text-gray-700">New Password</label>
             <input id="password" name="password" type="password" required
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
         </div>
@@ -39,23 +35,9 @@
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-400 focus:ring focus:ring-blue-200 focus:ring-opacity-50">
         </div>
 
-        <div class="flex items-start">
-            <input id="terms" name="terms" type="checkbox" required
-                class="mt-1 rounded border-gray-300 text-gray-900 focus:ring-gray-500">
-            <label for="terms" class="ml-2 text-sm text-gray-600">
-                I agree to the
-                <a href="{{ route('terms') }}" target="_blank" class="text-blue-600 hover:underline">Terms &amp; Conditions</a>
-            </label>
-        </div>
-
         <button type="submit"
             class="w-full bg-gray-900 text-white rounded-md py-2 text-sm font-medium hover:bg-gray-800 transition">
-            Register
+            Reset Password
         </button>
     </form>
-
-    <p class="text-sm text-gray-600 mt-6 text-center">
-        Already have an account?
-        <a href="{{ route('login') }}" class="text-blue-600 hover:underline">Log in</a>
-    </p>
 </x-layouts.guest>

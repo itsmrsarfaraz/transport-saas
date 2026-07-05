@@ -31,6 +31,8 @@ class RegisteredUserController extends Controller
             'role_id' => $customerRole->id,
         ]);
 
+        $user->forceFill(['terms_accepted_at' => now()])->save();
+
         event(new Registered($user));
 
         Auth::login($user);
